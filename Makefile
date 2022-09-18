@@ -1,26 +1,19 @@
 
 APP_NAME=server
+IMAGE_NAME=ngrok-server-example
 
-all: clean build-arm docker
+all: clean build docker
 
 clean:
+	@echo '- removing bin folder...'
 	rm -rf bin
 
-build-linux:
-	@echo '- building linux...'
-	@GOOS=linux go build  -o bin/$(APP_NAME).bin
-
-build-arm:
-	@echo '- building arm...'
-	@GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o bin/$(APP_NAME).arm
-
-build-mac:
-	@echo '- building mac...'
-	@GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 go build -o bin/$(APP_NAME).app
-
-build-win:
-	@echo '- building windows...'
-	@GOOS=windows GOARCH=386 CGO_ENABLED=0 go build -o bin/$(APP_NAME).exe
+build:
+	@echo '- building arm binary...'
+	@GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o bin/$(APP_NAME)
 
 docker:
-	docker build -t $(APP_NAME) .
+	@echo '- removing docker image...'
+	docker rmi ${IMAGE_NAME}:latest -f
+	@echo '- building docker image...'
+	docker build -t $(IMAGE_NAME) .
