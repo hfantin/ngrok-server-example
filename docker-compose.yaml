@@ -11,6 +11,6 @@ services:
     environment:
       NGROK_PROTOCOL: http
       NGROK_PORT: server:5000
-      NGROK_AUTH: 2EtrmgxI3ybPSSxqRY2DzOTFtzm_5sjbxBdFxWLygLwhMKxFh
+      NGROK_AUTH: 
     depends_on:
       - server
