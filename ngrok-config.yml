@@ -1,0 +1,7 @@
+version: 2
+web_addr: 0.0.0.0:4040
+authtoken: 2EtrmgxI3ybPSSxqRY2DzOTFtzm_5sjbxBdFxWLygLwhMKxFh
+tunnels:
+  httpbin:
+    proto: http
+    addr: server:5000

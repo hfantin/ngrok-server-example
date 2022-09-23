@@ -10,6 +10,10 @@ clean:
 
 build:
 	@echo '- building arm binary...'
+	@GOOS=linux GOARCH=arm CGO_ENABLED=0 go build -o bin/$(APP_NAME)
+
+build-amd64:
+	@echo '- building amd64 binary...'
 	@GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o bin/$(APP_NAME)
 
 docker:

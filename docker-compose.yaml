@@ -5,12 +5,10 @@ services:
     ports:
       - 5000:5000
   ngrok:
-    image: wernight/ngrok:latest
+    image: ngrok/ngrok:alpine # imagem para raspberry pi
     ports:
       - 4040:4040
-    environment:
-      NGROK_PROTOCOL: http
-      NGROK_PORT: server:5000
-      NGROK_AUTH: 
+    volumes:
+      - ./ngrok-config.yml:/var/lib/ngrok/ngrok.ymlåå
     depends_on:
       - server

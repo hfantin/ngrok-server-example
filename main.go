@@ -2,13 +2,15 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"net/http"
 )
 
 func main() {
-	fmt.Println("starting server on port 5000")
+	port := ":5000"
+	fmt.Println("starting server on port ", port, " - GOOS", runtime.GOOS, "GOARCH", runtime.GOARCH)
 	http.HandleFunc("/", HelloServer)
-	http.ListenAndServe(":5000", nil)
+	http.ListenAndServe(port, nil)
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
